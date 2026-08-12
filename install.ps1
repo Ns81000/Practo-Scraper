@@ -91,30 +91,26 @@ Write-Heading "Configuring Launcher"
 $LauncherPath = "$InstallDir\launch_scraper.bat"
 $LauncherContent = @"
 @echo off
-title Practo Scraper Servers
+title Practo Scraper Frontend
 echo =======================================
 echo Starting Practo Scraper Services...
 echo =======================================
 echo.
 
-echo [1/2] Starting Backend (Port 8000)...
+echo [1/2] Starting Backend (Port 8000) in a new window...
 start "Practo Backend" cmd /c "cd /d ""$InstallDir\backend"" && uv run uvicorn main:app --host 0.0.0.0 --port 8000"
 
-echo [2/2] Starting Frontend (Port 5174)...
-start "Practo Frontend" cmd /c "cd /d ""$InstallDir\frontend"" && pnpm run dev"
-
-echo Waiting for servers to initialize...
-timeout /t 5 >nul
+echo Waiting for backend to initialize...
+timeout /t 3 >nul
 
 echo Opening browser...
-start http://localhost:5174
+start http://localhost:5173
 
-echo.
+echo [2/2] Starting Frontend (Port 5173)...
 echo =======================================
-echo BOTH SERVERS ARE RUNNING IN BACKGROUND WINDOWS
-echo Close those windows to stop the servers when finished.
+echo Close this window AND the backend window to stop the servers.
 echo =======================================
-pause
+cd /d "$InstallDir\frontend" && pnpm run dev
 "@
 
 Set-Content -Path $LauncherPath -Value $LauncherContent
