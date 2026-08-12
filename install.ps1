@@ -78,9 +78,9 @@ Remove-Item -Recurse -Force $ExtractPath
 Write-Heading "Installing Dependencies"
 Write-Info "Setting up Backend (uv)..."
 Set-Location "$InstallDir\backend"
-uv sync
+python -m uv sync
 Write-Info "Installing Playwright browsers..."
-uv run playwright install chromium
+python -m uv run playwright install chromium
 
 Write-Info "Setting up Frontend (pnpm)..."
 Set-Location "$InstallDir\frontend"
@@ -98,7 +98,7 @@ echo =======================================
 echo.
 
 echo [1/2] Starting Backend (Port 8000) in a new window...
-start "Practo Backend" cmd /c "cd /d ""$InstallDir\backend"" && uv run uvicorn main:app --host 0.0.0.0 --port 8000"
+start "Practo Backend" cmd /c "cd /d ""$InstallDir\backend"" && python -m uv run uvicorn main:app --host 0.0.0.0 --port 8000"
 
 echo Waiting for backend to initialize...
 timeout /t 3 >nul
