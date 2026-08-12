@@ -1,0 +1,269 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+/* ─── Clay Design System Tokens ─── */
+
+@theme {
+  /* Colors — Brand & Accent */
+  --color-clay-primary: #0a0a0a;
+  --color-clay-primary-active: #1f1f1f;
+  --color-clay-primary-disabled: #e5e5e5;
+
+  /* Colors — Text */
+  --color-clay-ink: #0a0a0a;
+  --color-clay-body: #3a3a3a;
+  --color-clay-body-strong: #1a1a1a;
+  --color-clay-muted: #6a6a6a;
+  --color-clay-muted-soft: #9a9a9a;
+
+  /* Colors — Surface */
+  --color-clay-canvas: #fffaf0;
+  --color-clay-surface-soft: #faf5e8;
+  --color-clay-surface-card: #f5f0e0;
+  --color-clay-surface-strong: #ebe6d6;
+  --color-clay-surface-dark: #0a1a1a;
+  --color-clay-surface-dark-elevated: #1a2a2a;
+  --color-clay-hairline: #e5e5e5;
+  --color-clay-hairline-soft: #f0f0f0;
+
+  /* Colors — On */
+  --color-clay-on-primary: #ffffff;
+  --color-clay-on-dark: #ffffff;
+  --color-clay-on-dark-soft: #a0a0a0;
+
+  /* Colors — Brand palette */
+  --color-clay-brand-pink: #ff4d8b;
+  --color-clay-brand-teal: #1a3a3a;
+  --color-clay-brand-lavender: #b8a4ed;
+  --color-clay-brand-peach: #ffb084;
+  --color-clay-brand-ochre: #e8b94a;
+  --color-clay-brand-mint: #a4d4c5;
+  --color-clay-brand-coral: #ff6b5a;
+
+  /* Colors — Semantic */
+  --color-clay-success: #22c55e;
+  --color-clay-warning: #f59e0b;
+  --color-clay-error: #ef4444;
+
+  /* Spacing */
+  --spacing-clay-xxs: 4px;
+  --spacing-clay-xs: 8px;
+  --spacing-clay-sm: 12px;
+  --spacing-clay-md: 16px;
+  --spacing-clay-lg: 24px;
+  --spacing-clay-xl: 32px;
+  --spacing-clay-xxl: 48px;
+  --spacing-clay-section: 96px;
+
+  /* Border Radius */
+  --radius-clay-xs: 6px;
+  --radius-clay-sm: 8px;
+  --radius-clay-md: 12px;
+  --radius-clay-lg: 16px;
+  --radius-clay-xl: 24px;
+  --radius-clay-pill: 9999px;
+  --radius-clay-full: 9999px;
+}
+
+/* ─── Base Styles ─── */
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.55;
+    color: var(--color-clay-body);
+    background-color: var(--color-clay-canvas);
+  }
+
+  ::selection {
+    background-color: rgba(184, 164, 237, 0.3); /* lavender selection */
+    color: var(--color-clay-ink);
+  }
+
+  /* Custom focus ring — no native browser ring */
+  :focus-visible {
+    outline: 2px solid var(--color-clay-brand-teal);
+    outline-offset: 2px;
+    border-radius: var(--radius-clay-sm);
+  }
+
+  /* Hide native scrollbar everywhere — custom scrollbar via components */
+  .hide-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Custom scrollbar for areas that need one */
+  .clay-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-clay-surface-strong) transparent;
+  }
+  .clay-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .clay-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .clay-scrollbar::-webkit-scrollbar-thumb {
+    background-color: var(--color-clay-surface-strong);
+    border-radius: var(--radius-clay-pill);
+  }
+  .clay-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-clay-muted-soft);
+  }
+}
+
+/* ─── Typography Utilities ─── */
+
+@layer utilities {
+  .text-display-xl {
+    font-family: "Inter", sans-serif;
+    font-size: 72px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -2.5px;
+  }
+
+  .text-display-lg {
+    font-family: "Inter", sans-serif;
+    font-size: 56px;
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -2px;
+  }
+
+  .text-display-md {
+    font-family: "Inter", sans-serif;
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -1px;
+  }
+
+  .text-display-sm {
+    font-family: "Inter", sans-serif;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+  }
+
+  .text-title-lg {
+    font-family: "Inter", sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.3px;
+  }
+
+  .text-title-md {
+    font-family: "Inter", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .text-title-sm {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .text-body-md {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.55;
+  }
+
+  .text-body-sm {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.55;
+  }
+
+  .text-caption {
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .text-caption-uppercase {
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .text-button {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  .text-nav-link {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+}
+
+/* ─── Animations ─── */
+
+@layer utilities {
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slide-down {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes progress-fill {
+    from { width: 0; }
+  }
+
+  @keyframes pulse-soft {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.2s ease-out;
+  }
+
+  .animate-slide-down {
+    animation: slide-down 0.2s ease-out;
+  }
+
+  .animate-pulse-soft {
+    animation: pulse-soft 2s ease-in-out infinite;
+  }
+}
