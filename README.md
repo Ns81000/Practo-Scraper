@@ -57,7 +57,10 @@ irm https://raw.githubusercontent.com/Ns81000/Practo-Scraper/main/install.ps1 | 
 ### Starting the Application
 
 Once installed, simply double-click the **Practo Scraper** shortcut on your Desktop. 
-It will launch both the backend (Uvicorn) and frontend (Vite) servers in the background and automatically open your default browser to `http://localhost:5174`.
+It will launch both the backend (Uvicorn) and frontend (Vite) servers and automatically open your default browser to `http://localhost:5173`.
+
+### 🛡️ Bulletproof Installation
+The setup script utilizes direct module invocation (`python -m uv`) to completely bypass common Windows `PATH` issues when resolving package managers globally.
 
 ---
 
